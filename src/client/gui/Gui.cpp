@@ -829,7 +829,7 @@ void Gui::renderDebugInfo() {
 
 	static char ln[8][96];
 	sprintf(ln[0], "Minecraft PE 0.6.1 alpha (mcpe64)");
-	sprintf(ln[1], "%.1f fps", fps);
+	sprintf(ln[1], "%.1f fps", (double)fps);
 	ln[2][0] = '\0'; // blank separator
 	sprintf(ln[3], "XYZ: %.3f / %.3f / %.3f", px, py, pz);
 	sprintf(ln[4], "Block: %d %d %d   Chunk: %d %d", bx, by, bz, cx, cz);
