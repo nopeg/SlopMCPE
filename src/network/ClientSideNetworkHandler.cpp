@@ -678,8 +678,8 @@ void ClientSideNetworkHandler::handle(const RakNet::RakNetGUID& source, ChunkDat
 		}
 	}
 
-	for (int lx = 0; lx < CHUNK_WIDTH; lx++) {
-		for (int lz = 0; lz < CHUNK_DEPTH; lz++) {
+	for (int lx = 0; lx < LevelConstants::CHUNK_WIDTH; lx++) {
+		for (int lz = 0; lz < LevelConstants::CHUNK_DEPTH; lz++) {
 			for (int ly = y0; ly <= y1; ly++) {
 				int t = chunk->getTile(lx, ly, lz);
 				if (t > 0 && Tile::isEntityTile[t]) {
