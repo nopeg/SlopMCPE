@@ -14,6 +14,9 @@ public:
 	virtual void addChild(GuiElement* element);
 	virtual void removeChild(GuiElement* element);
 	bool containsPointInChildren(int x, int y) const;
+	void clearAll();
+	size_t size() const;
+	GuiElement* get(int index) const;
 
 	virtual void tick( Minecraft* minecraft );
 
