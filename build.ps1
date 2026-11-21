@@ -20,9 +20,11 @@ $ErrorActionPreference = "Stop"
 $repo       = $PSScriptRoot
 $apkbuild   = "C:\apkbuild"
 $ndk        = "C:\android-ndk-r14b"
-$sdkTools   = "$env:LOCALAPPDATA\Android\Sdk\build-tools\36.0.0"
-$androidJar = "$env:LOCALAPPDATA\Android\Sdk\platforms\android-36.1\android.jar"
-$adb        = "$env:LOCALAPPDATA\Android\Sdk\platform-tools\adb.exe"
+# SDK root: ANDROID_HOME / ANDROID_SDK_ROOT if set, otherwise the default per-user location
+$sdkRoot    = if ($env:ANDROID_HOME) { $env:ANDROID_HOME } elseif ($env:ANDROID_SDK_ROOT) { $env:ANDROID_SDK_ROOT } else { "$env:LOCALAPPDATA\Android\Sdk" }
+$sdkTools   = "$sdkRoot\build-tools\36.0.0"
+$androidJar = "$sdkRoot\platforms\android-36.1\android.jar"
+$adb        = "$sdkRoot\platform-tools\adb.exe"
 $keystore   = "$apkbuild\debug.keystore"
 $pkg        = "com.mojang.minecraftpe"
 
