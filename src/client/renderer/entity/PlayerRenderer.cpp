@@ -80,6 +80,10 @@ void PlayerRenderer::updateSkinModel(Mob* mob) {
 		((Player*)mob)->name.c_str(), mob->getTexture().c_str(), 
 		humanoidModel->texWidth, humanoidModel->texHeight,
 		(desired == playerModel64 ? "64" : "32")); */
+}
+
+void PlayerRenderer::render(Entity* mob_, float x, float y, float z, float rot, float a) {
+	updateSkinModel((Mob*) mob_);
 	HumanoidMobRenderer::render(mob_, x, y, z, rot, a);
 }
 
