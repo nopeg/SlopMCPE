@@ -35,7 +35,7 @@ bool createFolderIfNotExists( const char* name ) {
 
     int errorCode = 0;
 	if ((errorCode = _mkdir(name)) != 0) {
-        LOGI("FAILED to create folder %s, %d! Escape plan?\n", name, _errno());
+        LOGI("FAILED to create folder %s, %d! Escape plan?\n", name, *_errno());
         return false;
     }
 

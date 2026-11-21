@@ -449,15 +449,15 @@ void ClientSideNetworkHandler::handle(const RakNet::RakNetGUID& source, TakeItem
 
 	LOGI("TakeItemPacket\n");
 
-	ItemInstance* item;
+	ItemInstance item;
 
-	item->count = packet->count;
-	item->id = packet->itemId;
-	item->setAuxValue(packet->auxValue);
+	item.count = packet->count;
+	item.id = packet->itemId;
+	item.setAuxValue(packet->auxValue);
 
 	// if (minecraft->player->entityId == packet->playerId) {
-	if (!minecraft->player->inventory->add(item)) {
-		minecraft->player->drop(new ItemInstance(*item), false);
+	if (!minecraft->player->inventory->add(&item)) {
+		minecraft->player->drop(new ItemInstance(item), false);
 	}
 	// }
 }
