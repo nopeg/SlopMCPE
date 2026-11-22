@@ -156,6 +156,17 @@ void TButton::renderBg( Minecraft* minecraft, int xm, int ym )
 
 	static NinePatchLayer* normalPatch = nullptr;
 	static NinePatchLayer* pressedPatch = nullptr;
+	static Textures* patchTextures = nullptr;
+
+	// The patches keep the Textures* they were built with. After the game is quit and
+	// started again in the same process that object is gone, so rebuild the patches.
+	if (patchTextures != minecraft->textures) {
+		delete normalPatch;
+		delete pressedPatch;
+		normalPatch = nullptr;
+		pressedPatch = nullptr;
+		patchTextures = minecraft->textures;
+	}
 
 	if (!normalPatch) {
 		NinePatchFactory factory(minecraft->textures, "gui/spritesheet.png");
