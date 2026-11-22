@@ -678,6 +678,10 @@ public class MainActivity extends Activity {
     	nativeUnregisterThis();
     	super.onDestroy();
     	nativeOnDestroy();
+    	// The native engine keeps process-wide state that nativeOnDestroy() does not reset,
+    	// so starting the game again inside the same process crashes. When the user quits,
+    	// end the process. SIGKILL on purpose: it skips C++ static destructors.
+    	if (isFinishing()) android.os.Process.killProcess(android.os.Process.myPid());
     }
 
     protected boolean isDemo() { return false; }
